@@ -37,6 +37,6 @@ jobs:
         run: npm run build
 
       - name: Deploy to Firebase
-        run: npx firebase deploy --only hosting:roverpointingpoker
+        run: npx firebase deploy --only hosting:roverpointingpoker --project ${{ secrets.FIREBASE_PROJECT_ID }}
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
