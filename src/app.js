@@ -110,8 +110,8 @@ function renderParticipants(participants, revealed) {
   const sorted = Object.entries(participants).sort((a, b) => a[1].name.localeCompare(b[1].name));
   participantsEl.innerHTML = sorted.map(([id, p], i) => {
     const voteDisplay = revealed
-      ? `<span class="font-bold ${p.vote !== null ? 'text-green-400' : 'text-gray-500'}">${p.vote ?? '-'}</span>`
-      : `<span class="${p.vote !== null ? 'text-green-400' : 'text-gray-500'}">${p.vote !== null ? '[ready]' : '[...]'}</span>`;
+      ? `<span class="font-bold ${p.vote !== null ? 'text-green-600 dark:text-green-400' : 'text-gray-500'}">${p.vote ?? '-'}</span>`
+      : `<span class="${p.vote !== null ? 'text-green-600 dark:text-green-400' : 'text-gray-500'}">${p.vote !== null ? '[ready]' : '[...]'}</span>`;
     const isMe = id === odId ? ' (you)' : '';
     const isLast = i === sorted.length - 1;
     return `<div class="flex justify-between items-center px-4 py-3 ${isLast ? '' : 'mb-2'} bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-green-700">${p.name}${isMe} ${voteDisplay}</div>`;
