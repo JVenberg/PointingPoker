@@ -2,7 +2,7 @@
   "name": "pointing-poker",
   "version": "1.0.0",
   "scripts": {
-    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && cp ./src/index.html ./src/app.js ./src/config.js ./dist/",
+    "build": "tailwindcss -i ./src/input.css -o ./dist/output.css --minify && cp ./src/index.html ./src/app.js ./src/config.js ./src/favicon.svg ./dist/",
     "dev": "npm run build && firebase emulators:start",
     "deploy": "npm run build && firebase deploy"
   },
