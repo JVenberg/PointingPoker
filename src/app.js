@@ -15,8 +15,8 @@ localStorage.setItem('odId', odId);
 
 // Theme toggle
 const savedTheme = localStorage.getItem('theme');
-if (savedTheme === 'light') {
-  document.documentElement.classList.remove('dark');
+if (savedTheme === 'dark') {
+  document.documentElement.classList.add('dark');
 }
 document.getElementById('themeToggle').addEventListener('click', () => {
   document.documentElement.classList.toggle('dark');
@@ -110,11 +110,11 @@ function renderParticipants(participants, revealed) {
   const sorted = Object.entries(participants).sort((a, b) => a[1].name.localeCompare(b[1].name));
   participantsEl.innerHTML = sorted.map(([id, p], i) => {
     const voteDisplay = revealed
-      ? `<span class="font-bold ${p.vote !== null ? 'text-orange-400' : 'text-gray-500'}">${p.vote ?? '-'}</span>`
-      : `<span class="${p.vote !== null ? 'text-orange-400' : 'text-gray-500'}">${p.vote !== null ? '[ready]' : '[...]'}</span>`;
+      ? `<span class="font-bold ${p.vote !== null ? 'text-green-400' : 'text-gray-500'}">${p.vote ?? '-'}</span>`
+      : `<span class="${p.vote !== null ? 'text-green-400' : 'text-gray-500'}">${p.vote !== null ? '[ready]' : '[...]'}</span>`;
     const isMe = id === odId ? ' (you)' : '';
     const isLast = i === sorted.length - 1;
-    return `<div class="flex justify-between items-center px-4 py-3 ${isLast ? '' : 'mb-2'} bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-orange-700">${p.name}${isMe} ${voteDisplay}</div>`;
+    return `<div class="flex justify-between items-center px-4 py-3 ${isLast ? '' : 'mb-2'} bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-green-700">${p.name}${isMe} ${voteDisplay}</div>`;
   }).join('');
 }
 
@@ -122,9 +122,9 @@ function updatePointButtons(selectedVote) {
   document.querySelectorAll('.point-btn').forEach(btn => {
     const point = btn.dataset.point;
     const isSelected = String(selectedVote) === point;
-    btn.classList.toggle('bg-orange-600', isSelected);
+    btn.classList.toggle('bg-green-600', isSelected);
     btn.classList.toggle('text-gray-900', isSelected);
-    btn.classList.toggle('border-orange-400', isSelected);
+    btn.classList.toggle('border-green-400', isSelected);
   });
 }
 
