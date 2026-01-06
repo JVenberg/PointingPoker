@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pointing Poker</title>
+  <link rel="stylesheet" href="output.css">
+</head>
+<body class="font-mono bg-gray-100 dark:bg-gray-900 min-h-screen text-gray-900 dark:text-orange-300 transition-colors">
+  <div class="container mx-auto px-4 py-8 max-w-2xl">
+    <div class="flex justify-between items-center mb-8">
+      <h1 id="titleBtn" class="text-3xl font-bold text-gray-800 dark:text-orange-400 cursor-pointer">&gt; Pointing Poker</h1>
+      <button id="themeToggle" class="px-3 py-1 border border-gray-300 dark:border-orange-700 hover:bg-gray-200 dark:hover:bg-orange-900/30 transition text-sm">
+        <span class="dark:hidden">dark</span>
+        <span class="hidden dark:inline">light</span>
+      </button>
+    </div>
+
+    <!-- Join/Create View -->
+    <div id="joinView" class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-orange-700 p-6">
+      <div class="mb-4">
+        <label class="block text-gray-700 dark:text-orange-300 mb-2" for="nameInput">&gt; your_name:</label>
+        <input type="text" id="nameInput" class="w-full px-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-orange-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-orange-500 text-gray-900 dark:text-orange-300" placeholder="enter name">
+      </div>
+      <div id="createSection">
+        <div class="flex gap-4 mb-4">
+          <button id="createBtn" class="flex-1 bg-green-500 dark:bg-orange-600 text-white dark:text-gray-900 py-2 px-4 hover:bg-green-600 dark:hover:bg-orange-500 transition font-bold">[ CREATE ROOM ]</button>
+        </div>
+        <div class="border-t border-gray-200 dark:border-orange-700 pt-4">
+          <label class="block text-gray-700 dark:text-orange-300 mb-2" for="roomInput">&gt; join_room:</label>
+          <div class="flex gap-2">
+            <input type="text" id="roomInput" class="flex-1 px-4 py-2 bg-gray-50 dark:bg-gray-900 border border-gray-300 dark:border-orange-700 focus:outline-none focus:ring-2 focus:ring-green-500 dark:focus:ring-orange-500 uppercase text-gray-900 dark:text-orange-300" placeholder="room code" maxlength="6">
+            <button id="joinBtn" class="bg-green-500 dark:bg-orange-600 text-white dark:text-gray-900 py-2 px-4 hover:bg-green-600 dark:hover:bg-orange-500 transition font-bold">[ JOIN ]</button>
+          </div>
+        </div>
+      </div>
+      <div id="joinLinkSection" class="hidden">
+        <p class="text-gray-600 dark:text-orange-300 mb-4">&gt; joining room: <span id="joiningRoomCode" class="font-bold text-gray-900 dark:text-orange-400"></span></p>
+        <button id="joinLinkBtn" class="w-full bg-green-500 dark:bg-orange-600 text-white dark:text-gray-900 py-2 px-4 hover:bg-green-600 dark:hover:bg-orange-500 transition font-bold">[ JOIN ROOM ]</button>
+      </div>
+    </div>
+
+    <!-- Room View -->
+    <div id="roomView" class="hidden">
+      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-orange-700 p-6 mb-4">
+        <div class="flex justify-between items-center mb-4">
+          <div>
+            <span class="text-gray-600 dark:text-orange-300">&gt; Room:</span>
+            <span id="roomCode" class="font-bold text-xl ml-2 text-gray-900 dark:text-orange-400"></span>
+          </div>
+          <button id="copyBtn" class="text-green-600 dark:text-orange-400 hover:text-green-700 dark:hover:text-orange-300 text-sm">[ copy link ]</button>
+        </div>
+        <div class="flex flex-wrap gap-2 justify-center">
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="0">0</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="1">1</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="2">2</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="3">3</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="5">5</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="8">8</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="13">13</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="21">21</button>
+          <button class="point-btn w-12 h-12 border-2 border-gray-300 dark:border-orange-700 hover:border-green-500 dark:hover:border-orange-400 hover:bg-gray-100 dark:hover:bg-orange-900/30 transition font-bold text-gray-700 dark:text-orange-300" data-point="?">?</button>
+        </div>
+      </div>
+
+      <div class="flex gap-4 mb-4">
+        <button id="revealBtn" class="flex-1 bg-green-600 dark:bg-orange-600 text-white dark:text-gray-900 py-2 px-4 hover:bg-green-700 dark:hover:bg-orange-500 transition font-bold">[ REVEAL ]</button>
+        <button id="resetBtn" class="flex-1 bg-gray-500 dark:bg-gray-700 text-white py-2 px-4 hover:bg-gray-600 dark:hover:bg-gray-600 transition font-bold">[ RESET ]</button>
+      </div>
+
+      <div class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-orange-700 p-6">
+        <h2 class="text-lg font-bold mb-4 text-gray-700 dark:text-orange-300">&gt; Participants:</h2>
+        <div id="participants"></div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
